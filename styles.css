@@ -21,34 +21,33 @@ body * {
     line-height: 160%;
 }
 
-/* ------------- POSSIVEL SOLUÇÃO ------------ */
-
 header {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 0px;
-    gap: 32px;
+    padding-top: 32px;
+    /* Detalhe de animação */
+    height: calc(120px+32px);
 }
 
 header div {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 4px;
+    width: 120px;
+    margin: auto;
+
     background-image: linear-gradient(90deg, #9572FC 0%, #43E7AD 50.52%, #E2D45C 100%);
     border-radius: 50%;
+
+    display: flex;
+    padding: 4px;
+
+    transition: transform .3s;
+}
+
+header div:hover {
+    transform: scale(1.1);
 }
 
 header img{
-    width: 120px;
-    height: 120px;
-
+    width: 100%;
     border-radius: 50%;
-} 
-/* ------------------------- */
+}
 
 main {
     max-width: 580px;
@@ -59,14 +58,11 @@ main {
     Para telas menores que 580px usara 90% de largura
     */
 
-    margin: auto;
+    margin: 32px auto;
 
     display: flex;
     flex-direction: column;
     gap: 24px;
-
-    margin-top: 32px;
-    margin-bottom: 32px;
 }
 
 section {
@@ -108,6 +104,14 @@ section ul {
     margin-top: 24px;
 }
 
+section ul li {
+    transition: transform .3s
+}
+
+section ul li:hover {
+    transform: scale(1.1);
+}
+
 .games-list img {
     width: 90px;
     border-radius: 8px;
@@ -116,4 +120,84 @@ section ul {
 .channel-list img {
     width: 70px;
     border-radius: 50%;
+
+    border: 1px solid #443E54;
+}
+
+/* animation */
+header div {
+    animation: fromTop .7s .2s backwards;
+}
+
+main section {
+    animation: fromBottom .7s backwards;
+}
+
+/* pegando o filho um de section */
+main section:nth-child(1) {
+    animation-delay: 0;
+}
+
+main section:nth-child(2) {
+    animation-delay: .4s;
+}
+
+main section:nth-child(3) {
+    animation-delay: .8s;
+}
+
+ul li {
+    animation: fromLeft .7s backwards;
+}
+
+ul li:nth-child(1) {
+    animation-delay: 0;
+}
+
+ul li:nth-child(2) {
+    animation-delay: .4s;
+}
+
+ul li:nth-child(3) {
+    animation-delay: .8s;
+}
+
+ul li:nth-child(4) {
+    animation-delay: .12s;
+}
+
+@keyframes fromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+@keyframes fromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0)
+    }
 }
